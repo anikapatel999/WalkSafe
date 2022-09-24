@@ -12,8 +12,7 @@ plugins {
     id 'com.android.application' version '7.3.0' apply false
     id 'com.android.library' version '7.3.0' apply false
 }
-<<<<<<< HEAD
-=======
+
 //buildscript {
 //    repositories {
 //        jcenter()
@@ -41,7 +40,6 @@ plugins {
 //}
 //
 //compile(name: 'pocketsphinx-android-5prealpha-release', ext: 'aar')
->>>>>>> b730f3a05242ff31f0086eeff727812b2e3f7e94
 
 //allprojects {
 //    repositories {

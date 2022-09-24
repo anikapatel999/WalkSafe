@@ -18,5 +18,6 @@
         android:id="@+id/logout"
         android:title="Log out"
         android:icon="@drawable/ic_baseline_close_24"
+        android:onClick="onLogout"
         app:showAsAction="always"/>
 </menu>

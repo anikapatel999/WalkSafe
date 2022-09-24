@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.parse.ParseUser;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -17,9 +19,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater()
-                .inflate(R.menu.actionbarmenu, menu);
+        getMenuInflater().inflate(R.menu.actionbarmenu, menu);
+        menu.findItem(R.id.home).setVisible(false);
         return true;
+    }
+
+    public void onLogout(MenuItem item) {
+        ParseUser.logOut();
+        ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }
