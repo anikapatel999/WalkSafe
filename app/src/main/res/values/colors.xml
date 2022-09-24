@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-</resources>
+    <color name="mic_enabled_color">#0E87E7</color>
+    <color name="mic_disabled_color">#6D6A6A</color>
+
+
+    </resources>
