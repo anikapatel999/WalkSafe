@@ -11,7 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.Parse;
 import com.parse.ParseException;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
@@ -49,6 +51,8 @@ public class SignupActivity extends AppCompatActivity {
 
         user.setUsername(username);
         user.setPassword(password);
+        ParseGeoPoint gp = new ParseGeoPoint(0,0);
+        user.put("currentLocation", gp);
 
         Log.i(TAG, "called signupUser");
         user.signUpInBackground(new SignUpCallback() {

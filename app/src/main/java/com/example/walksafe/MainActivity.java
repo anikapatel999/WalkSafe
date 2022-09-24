@@ -26,10 +26,22 @@ public class MainActivity extends AppCompatActivity {
 
     public void onLogout(MenuItem item) {
         ParseUser.logOut();
-        ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
+        ParseUser currentUser = ParseUser.getCurrentUser();
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    public void onCallSettings(MenuItem item) {
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+//        finish();
+    }
+
+    public void onMessageSettings(MenuItem item) {
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+//        finish();
     }
 
 }
