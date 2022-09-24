@@ -41,5 +41,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation "com.github.parse-community.Parse-SDK-Android:parse:4.1.0"
+
 }
 
