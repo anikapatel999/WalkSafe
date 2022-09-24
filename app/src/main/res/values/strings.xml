@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">WalkSafe</string>
+
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+
+    <!-- Paste BOTH strings as required -->
+    <string name="back4app_app_id">fKhuPPxDk7ow87CQ1ZXnfHH1kPchYYmjjkORA8R4</string>
+    <string name="back4app_client_key">93AkvfvL88R9svnpM71sKQwHGcxSQ34g3y7oBb6v</string>
+
 </resources>
