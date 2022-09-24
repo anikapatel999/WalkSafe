@@ -3,20 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/callSettings"
+        android:title="@string/call_settings"
+        android:icon="@drawable/ic_baseline_settings_phone_24"
+        android:onClick="onCallSettings"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/messageSettings"
+        android:title="@string/message_settings"
+        android:icon="@drawable/ic_baseline_textsms_24"
+        android:onClick="onMessageSettings"
+        app:showAsAction="always"/>
+
+    <item
         android:id="@+id/home"
-        android:title="Home"
+        android:title="@string/home"
         android:icon="@drawable/ic_baseline_home_24"
         app:showAsAction="always"/>
 
     <item
-        android:id="@+id/settings"
-        android:title="Settings"
-        android:icon="@drawable/ic_baseline_settings_24"
-        app:showAsAction="always"/>
-
-    <item
         android:id="@+id/logout"
-        android:title="Log out"
+        android:title="@string/log_out"
         android:icon="@drawable/ic_baseline_close_24"
+        android:onClick="onLogout"
         app:showAsAction="always"/>
 </menu>
