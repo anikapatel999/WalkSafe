@@ -7,4 +7,29 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--    call button / text layout on main page (temporary before we figure out calls) -->
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="292dp"
+        android:ems="10"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="Please enter your phone no."
+        android:layout_marginHorizontal="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/callbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhone"
+        app:srcCompat="@drawable/ic_baseline_local_phone_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

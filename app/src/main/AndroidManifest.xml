@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
 <!--&lt;!&ndash;    permission to make phone calls&ndash;&gt;-->
-<!--    <uses-permission android:name="android.permission.CALL_PHONE" />-->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:name=".ParseApp"
