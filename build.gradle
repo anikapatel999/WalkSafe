@@ -3,31 +3,31 @@ plugins {
     id 'com.android.application' version '7.3.0' apply false
     id 'com.android.library' version '7.3.0' apply false
 }
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.0'
-    }
-}
-
-allprojects {
-    repositories {
-        jcenter()
-        flatDir {
-            dirs 'libs'
-        }
-        maven {
-            url  "https://dl.bintray.com"
-        }
-        google()
-    }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
-
-compile(name: 'pocketsphinx-android-5prealpha-release', ext: 'aar')
+//buildscript {
+//    repositories {
+//        jcenter()
+//    }
+//    dependencies {
+//        classpath 'com.android.tools.build:gradle:3.2.0'
+//    }
+//}
+//
+//allprojects {
+//    repositories {
+//        jcenter()
+//        flatDir {
+//            dirs 'libs'
+//        }
+//        maven {
+//            url  "https://dl.bintray.com"
+//        }
+//        google()
+//    }
+//}
+//
+//task clean(type: Delete) {
+//    delete rootProject.buildDir
+//}
+//
+//compile(name: 'pocketsphinx-android-5prealpha-release', ext: 'aar')
 
