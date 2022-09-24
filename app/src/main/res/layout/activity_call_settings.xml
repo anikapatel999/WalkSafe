@@ -19,8 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="Official Emergency Phone Number"
-            android:textSize="20sp"
+            android:text="Official Emergency Contact"
+            android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -47,7 +47,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvEmCall1Description" />
 
         <Button
-            android:id="@+id/btnSave1"
+            android:id="@+id/btnCallSave1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="225dp"
@@ -56,6 +56,39 @@
             app:layout_constraintLeft_toRightOf="@id/etEmCall1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvEmCall1Description" />
+
+        <TextView
+            android:id="@+id/tvEmWord1Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:text="Enter a word here. If you say this word while WalkSafe is on, WalkSafe will automatically start a call with the number above"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etEmCall1" />
+
+        <EditText
+            android:id="@+id/etEmWord1"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:hint="word"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmWord1Description"
+            android:maxLength="20"
+            />
+
+        <Button
+            android:id="@+id/btnWordSave1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="225dp"
+            android:layout_marginTop="10dp"
+            android:text="Save"
+            app:layout_constraintLeft_toRightOf="@id/etEmCall1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmWord1Description" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

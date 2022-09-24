@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,6 +50,12 @@ public class MainActivity extends AppCompatActivity {
     AlertDialog.Builder alertSpeechDialog;
     AlertDialog alertDialog;
 
+    // fields for sending sms messages
+
+    EditText textMessage;
+
+    FloatingActionButton messagebtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,11 +68,74 @@ public class MainActivity extends AppCompatActivity {
         editText = findViewById(R.id.editText);
         imageView = findViewById(R.id.imageView);
 
+        // variables for sending sms messages
+        textMessage = findViewById(R.id.editTextMessage);
+        messagebtn = findViewById(R.id.messagebtn);
+
         if (ContextCompat.checkSelfPermission(MainActivity.this,Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
 
             ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.CALL_PHONE},PERMISSION_CODE);
 
         }
+
+        // permissions for sending sms
+        if (ContextCompat.checkSelfPermission(MainActivity.this,Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED){
+
+            ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.SEND_SMS},PERMISSION_CODE);
+
+        }
+
+
+        // call click onclick
+        callbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makeCall();
+
+            }
+        });
+
+        messagebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendSMS();
+
+            }
+        });
+
+    }
+
+    // private method for making phone calls
+    private void makeCall(){
+        // making phone calls
+        String phoneno = phoneNo.getText().toString();
+        Intent i = new Intent(Intent.ACTION_CALL);
+        i.setData(Uri.parse("tel:"+phoneno));
+        startActivity(i);
+    }
+
+    // private method for sending sms messages
+    private void sendSMS(){
+        // making phone calls
+        String phoneno = phoneNo.getText().toString();
+        String message = textMessage.getText().toString();
+
+//        Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+//        sendIntent.putExtra("sms_body", "default content");
+//        sendIntent.setType("vnd.android-dir/mms-sms");
+//        startActivity(sendIntent);
+        if (!phoneno.isEmpty() && !message.isEmpty()){
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(phoneno, null, message, null, null);
+
+            Toast.makeText(this, "Message sent successfully", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(this, "Please enter phone number and message", Toast.LENGTH_SHORT).show();
+        }
+
+
+        // speech recognition that works
 
         if (ContextCompat.checkSelfPermission(MainActivity.this,Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
 
@@ -152,17 +222,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        callbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String phoneno = phoneNo.getText().toString();
-                Intent i = new Intent(Intent.ACTION_CALL);
-                i.setData(Uri.parse("tel:"+phoneno));
-                startActivity(i);
-
-            }
-        });
+//        callbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                String phoneno = phoneNo.getText().toString();
+//                Intent i = new Intent(Intent.ACTION_CALL);
+//                i.setData(Uri.parse("tel:"+phoneno));
+//                startActivity(i);
+//
+//            }
+//        });
 
     }
 

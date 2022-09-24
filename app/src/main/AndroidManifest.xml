@@ -12,6 +12,9 @@
 <!--&lt;!&ndash;    permission to make phone calls&ndash;&gt;-->
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
+<!--    permission to send sms messages -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
     <application
         android:name=".ParseApp"
         android:allowBackup="true"
