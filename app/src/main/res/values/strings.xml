@@ -6,5 +6,9 @@
     <!-- Paste BOTH strings as required -->
     <string name="back4app_app_id">fKhuPPxDk7ow87CQ1ZXnfHH1kPchYYmjjkORA8R4</string>
     <string name="back4app_client_key">93AkvfvL88R9svnpM71sKQwHGcxSQ34g3y7oBb6v</string>
+    <string name="call_settings">Call settings</string>
+    <string name="message_settings">Message Settings</string>
+    <string name="home">Home</string>
+    <string name="log_out">Log out</string>
 
 </resources>
