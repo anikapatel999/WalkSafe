@@ -7,12 +7,8 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-
-<!--&lt;!&ndash;    permission to make phone calls&ndash;&gt;-->
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-
-<!--    permission to send sms messages -->
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- &lt;!&ndash;    permission to make phone calls&ndash;&gt; -->
+    <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- permission to send sms messages -->
     <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
@@ -26,6 +22,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WalkSafe"
         tools:targetApi="31">
+        <activity
+            android:name=".AudioActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".MessageSettingsActivity"
             android:exported="false">

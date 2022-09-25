@@ -1,9 +1,358 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MessageSettingsActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/tvEmMessage1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:text="Emergency Message Contact 1"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvEmMessage1Description"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:text="You can add the phone number of a friend or family member who you would like to message if you feel unsafe"
+            app:layout_constraintBottom_toTopOf="@+id/etEmMessage1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmMessage1" />
+
+        <EditText
+            android:id="@+id/etEmMessage1"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:hint="911"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmMessage1Description" />
+
+        <Button
+            android:id="@+id/btnMessageSave1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="225dp"
+            android:layout_marginTop="10dp"
+            android:text="Save"
+            app:layout_constraintLeft_toRightOf="@id/etEmMessage1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmMessage1Description" />
+
+        <TextView
+            android:id="@+id/tvEmBody1Description"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:text="You can write a message that you would like to send to the number above if you feel unsafe"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etEmMessage1" />
+
+        <EditText
+            android:id="@+id/etEmBody1"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:hint="write your message here..."
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmBody1Description"
+            android:maxLength="250"
+            />
+
+        <Button
+            android:id="@+id/btnBodySave1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="225dp"
+            android:layout_marginTop="10dp"
+            android:text="Save"
+            app:layout_constraintLeft_toRightOf="@id/etEmBody1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmBody1Description" />
+
+        <TextView
+            android:id="@+id/tvEmWord1Description"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:text="Enter a word here. If you say this word while WalkSafe is on, WalkSafe will send the message to the number above"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etEmBody1" />
+
+        <EditText
+            android:id="@+id/etEmWord1"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:hint="word"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmWord1Description"
+            android:maxLength="20"
+            />
+
+        <Button
+            android:id="@+id/btnWordSave1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="225dp"
+            android:layout_marginTop="10dp"
+            android:text="Save"
+            app:layout_constraintLeft_toRightOf="@id/etEmMessage1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmWord1Description" />
+
+
+        <!-- ldfmdf;lfdl,;fld,b -->
+
+
+        <TextView
+            android:id="@+id/tvEmMessage2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="60dp"
+            android:text="Emergency Message Contact 2"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etEmWord1" />
+
+        <TextView
+            android:id="@+id/tvEmMessage2Description"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="25dp"
+            android:text="You can add the phone number of a friend or family member who you would like to message if you feel unsafe"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmMessage2"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/etEmMessage2"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:hint="1112223333"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmMessage2Description" />
+
+        <Button
+            android:id="@+id/btnMessageSave2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="225dp"
+            android:layout_marginTop="10dp"
+            android:text="Save"
+            app:layout_constraintLeft_toRightOf="@id/etEmMessage1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmMessage2Description" />
+
+        <TextView
+            android:id="@+id/tvEmBody2Description"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:text="You can write a message that you would like to send to the number above if you feel unsafe"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etEmMessage2" />
+
+        <EditText
+            android:id="@+id/etEmBody2"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:hint="write your message here..."
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmBody2Description"
+            android:maxLength="250"
+            />
+
+        <Button
+            android:id="@+id/btnBodySave2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="225dp"
+            android:layout_marginTop="10dp"
+            android:text="Save"
+            app:layout_constraintLeft_toRightOf="@id/etEmBody2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmBody2Description" />
+
+        <TextView
+            android:id="@+id/tvEmWord2Description"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:text="Enter a word here. If you say this word while WalkSafe is on, WalkSafe will send the message to the number above"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etEmBody2" />
+
+        <EditText
+            android:id="@+id/etEmWord2"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:hint="word"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmWord2Description"
+            android:maxLength="20"
+            />
+
+        <Button
+            android:id="@+id/btnWordSave2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="225dp"
+            android:layout_marginTop="10dp"
+            android:text="Save"
+            app:layout_constraintLeft_toRightOf="@id/etEmMessage2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmWord2Description" />
+
+
+        <!-- ldfmdf;lfdl,;fld,b -->
+
+
+        <TextView
+            android:id="@+id/tvEmMessage3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="60dp"
+            android:text="Emergency Message Contact 3"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etEmWord2" />
+
+        <TextView
+            android:id="@+id/tvEmMessage3Description"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="25dp"
+            android:text="You can add the phone number of a friend or family member who you would like to message if you feel unsafe"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmMessage3"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/etEmMessage3"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:hint="1112223333"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmMessage3Description" />
+
+        <Button
+            android:id="@+id/btnMessageSave3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="225dp"
+            android:layout_marginTop="10dp"
+            android:text="Save"
+            app:layout_constraintLeft_toRightOf="@id/etEmMessage3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmMessage3Description" />
+
+        <TextView
+            android:id="@+id/tvEmBody3Description"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:text="You can write a message that you would like to send to the number above if you feel unsafe"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etEmMessage3" />
+
+        <EditText
+            android:id="@+id/etEmBody3"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:hint="write your message here..."
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmBody3Description"
+            android:maxLength="250"
+            />
+
+        <Button
+            android:id="@+id/btnBodySave3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="225dp"
+            android:layout_marginTop="10dp"
+            android:text="Save"
+            app:layout_constraintLeft_toRightOf="@id/etEmBody3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmBody3Description" />
+
+
+        <TextView
+            android:id="@+id/tvEmWord3Description"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:text="Enter a word here. If you say this word while WalkSafe is on, WalkSafe will send the message to the number above"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etEmBody3" />
+
+        <EditText
+            android:id="@+id/etEmWord3"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:hint="word"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmWord3Description"
+            android:maxLength="20"
+            />
+
+        <Button
+            android:id="@+id/btnWordSave3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="225dp"
+            android:layout_marginTop="10dp"
+            android:text="Save"
+            app:layout_constraintLeft_toRightOf="@id/etEmMessage3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmWord3Description" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

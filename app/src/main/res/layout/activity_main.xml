@@ -7,94 +7,87 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginTop="200dp"
-        android:ems="10"
-        android:hint="Tap Mic to Speak"
-        android:inputType="text"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/call1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFB03C3E"
+        android:text="Official Emergency \nCall"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toTopOf="@+id/call2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="1" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/spokenWord"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:textSize="15dp"></TextView>-->
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="193dp"
-        android:layout_height="133dp"
-        android:layout_below="@+id/editText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="64dp"
-        android:padding="40dp"
-        android:src="@drawable/ic_baseline_mic_24"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/call2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FF513CB0"
+        android:text="Personal Emergency \nCall"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toTopOf="@+id/message1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent=".25"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></ImageView>
+        app:layout_constraintTop_toBottomOf="@id/call1"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="1" />
 
-    <!--    call button / text layout on main page (temporary before we figure out calls) -->
-    <EditText
-        android:id="@+id/editTextPhone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="292dp"
-        android:ems="10"
-        android:inputType="phone"
+
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/message1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FF3CA4B0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".333333"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.5"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:text="Emergency Message 1"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/message2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FF85B03C"
+        app:layout_constraintStart_toEndOf="@id/message1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".333333"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.5"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:text="Emergency Message 2"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/message3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFB06E3C"
         app:layout_constraintEnd_toEndOf="parent"
-        android:hint="Please enter your phone no."
-        android:layout_marginHorizontal="50dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!--    button to call -->
-
-    <!--    send sms / text layout on main page (temporary before we figure out texts) -->
-    <!--    text box to input sms message-->
-
-    <!--    button to text-->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/callbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:clickable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.608"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMessage"
-        app:srcCompat="@drawable/ic_baseline_local_phone_24" />
-
-    <EditText
-        android:id="@+id/editTextMessage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="50dp"
-        android:ems="10"
-        android:hint="Please enter a text message."
-        android:inputType="text"
-        android:padding="15sp"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone"
-        tools:layout_editor_absoluteX="38dp" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/messagebtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:clickable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.36"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMessage"
-        app:srcCompat="@drawable/ic_baseline_message_24" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".333333"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.5"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:text="Emergency Message 3"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

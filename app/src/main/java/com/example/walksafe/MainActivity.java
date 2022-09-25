@@ -28,6 +28,7 @@ import android.net.Uri;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -40,176 +41,100 @@ import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
+    private Button call1;
+    private Button call2;
+    private Button message1;
+    private Button message2;
+    private Button message3;
 
-    // fields for making calls
-    EditText phoneNo;
-    FloatingActionButton callbtn;
-    static int PERMISSION_CODE= 100;
+    static int PERMISSION_CODE = 100;
 
-    TextView spokenWord;
-    EditText editText;
-    ImageView imageView;
-    public final Integer RecordAudioRequestCode = 1;
-    private SpeechRecognizer speechRecognizer;
-    AlertDialog.Builder alertSpeechDialog;
-    AlertDialog alertDialog;
-
-    // fields for sending sms messages
-
-    EditText textMessage;
-
-    FloatingActionButton messagebtn;
+    private ParseUser user = ParseUser.getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // added functionality for making calls
-        phoneNo = findViewById(R.id.editTextPhone);
-        callbtn = findViewById(R.id.callbtn);
+        call1 = findViewById(R.id.call1);
+        call2 = findViewById(R.id.call2);
+        message1 = findViewById(R.id.message1);
+        message2 = findViewById(R.id.message2);
+        message3 = findViewById(R.id.message3);
 
-        editText = findViewById(R.id.editText);
-        imageView = findViewById(R.id.imageView);
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
 
-        // variables for sending sms messages
-        textMessage = findViewById(R.id.editTextMessage);
-        messagebtn = findViewById(R.id.messagebtn);
-
-        if (ContextCompat.checkSelfPermission(MainActivity.this,Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
-
-            ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.CALL_PHONE},PERMISSION_CODE);
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CALL_PHONE}, PERMISSION_CODE);
 
         }
 
         // permissions for sending sms
-        if (ContextCompat.checkSelfPermission(MainActivity.this,Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED){
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.SEND_SMS},PERMISSION_CODE);
-
-        }
-
-        if (ContextCompat.checkSelfPermission(MainActivity.this,Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
-
-            ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.RECORD_AUDIO},PERMISSION_CODE);
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.SEND_SMS}, PERMISSION_CODE);
 
         }
 
-        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
-        final Intent speechIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
-
-        speechRecognizer.setRecognitionListener(new RecognitionListener() {
+        call1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onReadyForSpeech(Bundle bundle) {
-
-            }
-
-            @Override
-            public void onBeginningOfSpeech() {
-                ViewGroup viewGroup = findViewById(android.R.id.content);
-                View dialogView = LayoutInflater.from(MainActivity.this).inflate(R.layout.alertcustom,
-                        viewGroup, false);
-
-                alertSpeechDialog = new AlertDialog.Builder(MainActivity.this);
-                alertSpeechDialog.setMessage("Listening...");
-                alertSpeechDialog.setView(dialogView);
-                alertDialog = alertSpeechDialog.create();
-                alertDialog.show();
-            }
-
-            @Override
-            public void onRmsChanged(float v) {
-
-            }
-
-            @Override
-            public void onBufferReceived(byte[] bytes) {
-
-            }
-
-            @Override
-            public void onEndOfSpeech() {
-
-            }
-
-            @Override
-            public void onError(int i) {
-
-            }
-
-            @Override
-            public void onResults(Bundle bundle) {
-                imageView.setImageResource(R.drawable.ic_baseline_mic_24);
-                ArrayList<String> arrayList = bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
-                editText.setText(arrayList.get(0));
-
-                alertDialog.dismiss();
-            }
-
-            @Override
-            public void onPartialResults(Bundle bundle) {
-
-            }
-
-            @Override
-            public void onEvent(int i, Bundle bundle) {
-
+            public void onClick(View view) {
+                makeCall("firstCall");
             }
         });
 
-        imageView.setOnTouchListener((view, motionEvent) -> {
-            if(motionEvent.getAction()==MotionEvent.ACTION_UP){
-                speechRecognizer.stopListening();
-            }
-            if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
-                imageView.setImageResource(R.drawable.ic_baseline_mic_24);
-                speechRecognizer.startListening(speechIntent);
-            }
-            return false;
-        });
 
-        // call click onclick
-        callbtn.setOnClickListener(new View.OnClickListener() {
+        call2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                makeCall();
-
+            public void onClick(View view) {
+                makeCall("secondCall");
             }
         });
 
-        messagebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendSMS();
 
+        message1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendSMS("textNumber1", "setFirstMessageBody");
+            }
+        });
+
+        message2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendSMS("textNumber2", "setSecondMessageBody");
+            }
+        });
+
+
+        message3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendSMS("textNumber3", "setThirdMessageBody");
             }
         });
 
     }
 
     // private method for making phone calls
-    private void makeCall(){
+    private void makeCall(String phoneNumColName) {
+
         // making phone calls
-        String phoneno = phoneNo.getText().toString();
+        String phoneno = user.get(phoneNumColName).toString();
         Intent i = new Intent(Intent.ACTION_CALL);
-        i.setData(Uri.parse("tel:"+phoneno));
+        i.setData(Uri.parse("tel:" + phoneno));
         startActivity(i);
+
     }
 
     // private method for sending sms messages
-    @SuppressLint("ClickableViewAccessibility")
-    private void sendSMS(){
+    private void sendSMS(String phoneNumColName, String messageColName) {
         // making phone calls
-        String phoneno = phoneNo.getText().toString();
-        String message = textMessage.getText().toString();
+        String phoneno = user.get(phoneNumColName).toString();
+        String message = user.get(messageColName).toString();
 
-//        Intent sendIntent = new Intent(Intent.ACTION_VIEW);
-//        sendIntent.putExtra("sms_body", "default content");
-//        sendIntent.setType("vnd.android-dir/mms-sms");
-//        startActivity(sendIntent);
+//        SmsManager smsManager = SmsManager.getDefault();
+//        smsManager.sendTextMessage(phoneno, null, message, null, null);
+
         if (!phoneno.isEmpty() && !message.isEmpty()){
             SmsManager smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage(phoneno, null, message, null, null);
@@ -221,45 +146,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        // speech recognition that works
-
-
-
-//        callbtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                String phoneno = phoneNo.getText().toString();
-//                Intent i = new Intent(Intent.ACTION_CALL);
-//                i.setData(Uri.parse("tel:"+phoneno));
-//                startActivity(i);
-//
-//            }
-//        });
-
-    }
-
-    private void checkPermission() {
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
-            ActivityCompat.requestPermissions(MainActivity.this, new String[]{
-                    Manifest.permission.RECORD_AUDIO}, RecordAudioRequestCode);
-        }
-    }
-    @Override
-    protected  void onDestroy(){
-        super.onDestroy();
-        speechRecognizer.destroy();
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults){
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode==RecordAudioRequestCode && grantResults.length > 0){
-            if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(this, "Permission Granted", Toast.LENGTH_LONG);
-            }
-        }
     }
 
     @Override
@@ -289,4 +175,15 @@ public class MainActivity extends AppCompatActivity {
 //        finish();
     }
 
+    public void onAudio(MenuItem item) {
+        Intent intent = new Intent(MainActivity.this, AudioActivity.class);
+        startActivity(intent);
+//        finish();
+    }
+
+    public void onHome(MenuItem item) {
+        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+        startActivity(intent);
+//        finish();
+    }
 }

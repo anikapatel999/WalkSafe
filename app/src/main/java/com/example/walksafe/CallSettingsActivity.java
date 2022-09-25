@@ -2,8 +2,11 @@ package com.example.walksafe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -171,4 +174,44 @@ public class CallSettingsActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.actionbarmenu, menu);
+        menu.findItem(R.id.callSettings).setVisible(false);
+        return true;
+    }
+
+    public void onLogout(MenuItem item) {
+        ParseUser.logOut();
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        Intent intent = new Intent(CallSettingsActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void onCallSettings(MenuItem item) {
+        Intent intent = new Intent(CallSettingsActivity.this, CallSettingsActivity.class);
+        startActivity(intent);
+//        finish();
+    }
+
+    public void onMessageSettings(MenuItem item) {
+        Intent intent = new Intent(CallSettingsActivity.this, MessageSettingsActivity.class);
+        startActivity(intent);
+//        finish();
+    }
+
+    public void onHome(MenuItem item) {
+        Intent intent = new Intent(CallSettingsActivity.this, MainActivity.class);
+        startActivity(intent);
+//        finish();
+    }
+
+    public void onAudio(MenuItem item) {
+        Intent intent = new Intent(CallSettingsActivity.this, AudioActivity.class);
+        startActivity(intent);
+//        finish();
+    }
+
 }

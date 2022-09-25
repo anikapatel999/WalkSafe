@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/audio"
+        android:title="@string/call_settings"
+        android:icon="@drawable/ic_baseline_mic_24_2"
+        android:onClick="onAudio"
+        app:showAsAction="always"/>
+
+    <item
         android:id="@+id/callSettings"
         android:title="@string/call_settings"
         android:icon="@drawable/ic_baseline_settings_phone_24"
@@ -19,6 +26,7 @@
     <item
         android:id="@+id/home"
         android:title="@string/home"
+        android:onClick="onHome"
         android:icon="@drawable/ic_baseline_home_24"
         app:showAsAction="always"/>
 
