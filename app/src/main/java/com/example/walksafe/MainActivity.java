@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,6 +30,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton callbtn;
     static int PERMISSION_CODE= 100;
 
+    TextView spokenWord;
     EditText editText;
     ImageView imageView;
     public final Integer RecordAudioRequestCode = 1;
@@ -84,58 +88,6 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.SEND_SMS},PERMISSION_CODE);
 
         }
-
-
-        // call click onclick
-        callbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                makeCall();
-
-            }
-        });
-
-        messagebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendSMS();
-
-            }
-        });
-
-    }
-
-    // private method for making phone calls
-    private void makeCall(){
-        // making phone calls
-        String phoneno = phoneNo.getText().toString();
-        Intent i = new Intent(Intent.ACTION_CALL);
-        i.setData(Uri.parse("tel:"+phoneno));
-        startActivity(i);
-    }
-
-    // private method for sending sms messages
-    private void sendSMS(){
-        // making phone calls
-        String phoneno = phoneNo.getText().toString();
-        String message = textMessage.getText().toString();
-
-//        Intent sendIntent = new Intent(Intent.ACTION_VIEW);
-//        sendIntent.putExtra("sms_body", "default content");
-//        sendIntent.setType("vnd.android-dir/mms-sms");
-//        startActivity(sendIntent);
-        if (!phoneno.isEmpty() && !message.isEmpty()){
-            SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage(phoneno, null, message, null, null);
-
-            Toast.makeText(this, "Message sent successfully", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(this, "Please enter phone number and message", Toast.LENGTH_SHORT).show();
-        }
-
-
-        // speech recognition that works
 
         if (ContextCompat.checkSelfPermission(MainActivity.this,Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
 
@@ -208,19 +160,70 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        imageView.setOnTouchListener(new View.OnTouchListener() {
+        imageView.setOnTouchListener((view, motionEvent) -> {
+            if(motionEvent.getAction()==MotionEvent.ACTION_UP){
+                speechRecognizer.stopListening();
+            }
+            if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+                imageView.setImageResource(R.drawable.ic_baseline_mic_24);
+                speechRecognizer.startListening(speechIntent);
+            }
+            return false;
+        });
+
+        // call click onclick
+        callbtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(motionEvent.getAction()==MotionEvent.ACTION_UP){
-                    speechRecognizer.stopListening();
-                }
-                if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
-                    imageView.setImageResource(R.drawable.ic_baseline_mic_24);
-                    speechRecognizer.startListening(speechIntent);
-                }
-                return false;
+            public void onClick(View v) {
+                makeCall();
+
             }
         });
+
+        messagebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendSMS();
+
+            }
+        });
+
+    }
+
+    // private method for making phone calls
+    private void makeCall(){
+        // making phone calls
+        String phoneno = phoneNo.getText().toString();
+        Intent i = new Intent(Intent.ACTION_CALL);
+        i.setData(Uri.parse("tel:"+phoneno));
+        startActivity(i);
+    }
+
+    // private method for sending sms messages
+    @SuppressLint("ClickableViewAccessibility")
+    private void sendSMS(){
+        // making phone calls
+        String phoneno = phoneNo.getText().toString();
+        String message = textMessage.getText().toString();
+
+//        Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+//        sendIntent.putExtra("sms_body", "default content");
+//        sendIntent.setType("vnd.android-dir/mms-sms");
+//        startActivity(sendIntent);
+        if (!phoneno.isEmpty() && !message.isEmpty()){
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(phoneno, null, message, null, null);
+
+            Toast.makeText(this, "Message sent successfully", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(this, "Please enter phone number and message", Toast.LENGTH_SHORT).show();
+        }
+
+
+        // speech recognition that works
+
+
 
 //        callbtn.setOnClickListener(new View.OnClickListener() {
 //            @Override

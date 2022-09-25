@@ -27,7 +27,7 @@
 
         <TextView
             android:id="@+id/tvEmCall1Description"
-            android:layout_width="wrap_content"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="20dp"
@@ -59,7 +59,7 @@
 
         <TextView
             android:id="@+id/tvEmWord1Description"
-            android:layout_width="wrap_content"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="20dp"
@@ -107,11 +107,11 @@
 
         <TextView
             android:id="@+id/tvEmCall2Description"
-            android:layout_width="wrap_content"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
+            android:layout_marginTop="25dp"
             android:text="You can add the phone number of a friend or family member who you would like to call if you feel unsafe"
-            app:layout_constraintBottom_toTopOf="@+id/etEmCall1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvEmCall2"
             app:layout_constraintVertical_bias="0.0" />
@@ -139,7 +139,7 @@
 
         <TextView
             android:id="@+id/tvEmWord2Description"
-            android:layout_width="wrap_content"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="20dp"
