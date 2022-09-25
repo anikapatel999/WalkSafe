@@ -90,6 +90,87 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvEmWord1Description" />
 
+        <!-- ldfmdf;lfdl,;fld,b -->
+
+
+        <TextView
+            android:id="@+id/tvEmCall2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="60dp"
+            android:text="Personal Emergency Contact"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etEmWord1" />
+
+        <TextView
+            android:id="@+id/tvEmCall2Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:text="You can add the phone number of a friend or family member who you would like to call if you feel unsafe"
+            app:layout_constraintBottom_toTopOf="@+id/etEmCall1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmCall2"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/etEmCall2"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:hint="1112223333"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmCall2Description" />
+
+        <Button
+            android:id="@+id/btnCallSave2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="225dp"
+            android:layout_marginTop="10dp"
+            android:text="Save"
+            app:layout_constraintLeft_toRightOf="@id/etEmCall1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmCall2Description" />
+
+        <TextView
+            android:id="@+id/tvEmWord2Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:text="Enter a word here. If you say this word while WalkSafe is on, WalkSafe will automatically start a call with the number above"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etEmCall2" />
+
+        <EditText
+            android:id="@+id/etEmWord2"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:hint="word"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmWord2Description"
+            android:maxLength="20"
+            />
+
+        <Button
+            android:id="@+id/btnWordSave2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="225dp"
+            android:layout_marginTop="10dp"
+            android:text="Save"
+            app:layout_constraintLeft_toRightOf="@id/etEmCall2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmWord2Description" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

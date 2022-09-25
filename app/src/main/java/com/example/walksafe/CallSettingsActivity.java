@@ -19,6 +19,7 @@ import java.util.Objects;
 public class CallSettingsActivity extends AppCompatActivity {
 
     public static final String TAG = "CallSettingsActivity";
+
     private TextView tvEmCall1;
     private TextView tvEmCall1Description;
     private EditText etEmCall1;
@@ -26,6 +27,14 @@ public class CallSettingsActivity extends AppCompatActivity {
     private TextView tvEmWord1Description;
     private EditText etEmWord1;
     private Button btnWordSave1;
+
+    private TextView tvEmCall2;
+    private TextView tvEmCall2Description;
+    private EditText etEmCall2;
+    private Button btnCallSave2;
+    private TextView tvEmWord2Description;
+    private EditText etEmWord2;
+    private Button btnWordSave2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +49,14 @@ public class CallSettingsActivity extends AppCompatActivity {
         etEmWord1 = findViewById(R.id.etEmWord1);
         btnWordSave1 = findViewById(R.id.btnWordSave1);
 
+        tvEmCall2 = findViewById(R.id.tvEmCall2);
+        tvEmCall2Description = findViewById(R.id.tvEmCall2Description);
+        etEmCall2 = findViewById(R.id.etEmCall2);
+        btnCallSave2 = findViewById(R.id.btnCallSave2);
+        tvEmWord2Description = findViewById(R.id.tvEmWord2Description);
+        etEmWord2 = findViewById(R.id.etEmWord2);
+        btnWordSave2 = findViewById(R.id.btnWordSave2);
+
         ParseUser currentUser = ParseUser.getCurrentUser();
 
         String currentNumber1 = currentUser.get("firstCall").toString();
@@ -47,7 +64,7 @@ public class CallSettingsActivity extends AppCompatActivity {
 
         String currentWord1 = "";
 
-        if (currentUser.get("setFirstCallWord").equals(true)) {
+        if (Objects.equals(currentUser.get("setFirstCallWord"), true)) {
             currentWord1 = currentUser.get("firstCallWord").toString();
             etEmWord1.setText(currentWord1);
         }
@@ -59,7 +76,7 @@ public class CallSettingsActivity extends AppCompatActivity {
                 if (!(callNumber1.matches("[0-9]+"))){
                     Toast.makeText(CallSettingsActivity.this, "Phone number must contain numbers only", Toast.LENGTH_SHORT).show();
                 }
-                else if (callNumber1.equals("911") || callNumber1.equals("988") || callNumber1.length() == 9) {
+                else if (callNumber1.equals("911") || callNumber1.equals("988") || callNumber1.length() == 10) {
                     currentUser.put("firstCall", callNumber1);
                     currentUser.saveInBackground(new SaveCallback() {
                         @Override
@@ -80,7 +97,7 @@ public class CallSettingsActivity extends AppCompatActivity {
                 String callWord1 = etEmWord1.getText().toString();
                 if (!(callWord1.isEmpty())) {
                     currentUser.put("firstCallWord", callWord1);
-                    if (currentUser.get("setFirstCallWord").equals(false)) {
+                    if (Objects.equals(currentUser.get("setFirstCallWord"), false)) {
                         currentUser.put("setFirstCallWord", true);
                     }
                     currentUser.saveInBackground(new SaveCallback() {
@@ -88,6 +105,63 @@ public class CallSettingsActivity extends AppCompatActivity {
                         public void done(ParseException e) {
                             Toast.makeText(CallSettingsActivity.this, "Saved!", Toast.LENGTH_SHORT).show();
                             Log.i(TAG, "sdmdfkm" + callWord1);
+                        }
+                    });
+                }
+                else {
+                    Toast.makeText(CallSettingsActivity.this, "Please enter a valid word!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        // PERSONAL CALL SECTION
+
+        String currentNumber2 = currentUser.get("secondCall").toString();
+        etEmCall2.setText(currentNumber2);
+
+        String currentWord2 = "";
+
+        if (Objects.equals(currentUser.get("setSecondCallWord"), true)) {
+            currentWord2 = currentUser.get("secondCallWord").toString();
+            etEmWord2.setText(currentWord2);
+        }
+
+        btnCallSave2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String callNumber2 = etEmCall2.getText().toString();
+                if (!(callNumber2.matches("[0-9]+"))){
+                    Toast.makeText(CallSettingsActivity.this, "Phone number must contain numbers only", Toast.LENGTH_SHORT).show();
+                }
+                else if (callNumber2.equals("911") || callNumber2.equals("988") || callNumber2.length() == 10) {
+                    currentUser.put("secondCall", callNumber2);
+                    currentUser.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            Toast.makeText(CallSettingsActivity.this, "Saved!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                else {
+                    Toast.makeText(CallSettingsActivity.this, "Invalid phone number", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btnWordSave2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String callWord2 = etEmWord2.getText().toString();
+                if (!(callWord2.isEmpty())) {
+                    currentUser.put("secondCallWord", callWord2);
+                    if (Objects.equals(currentUser.get("setSecondCallWord"), false)) {
+                        currentUser.put("setSecondCallWord", true);
+                    }
+                     currentUser.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            Toast.makeText(CallSettingsActivity.this, "Saved!", Toast.LENGTH_SHORT).show();
+                            Log.i(TAG, "sdmdfkm" + callWord2);
                         }
                     });
                 }
